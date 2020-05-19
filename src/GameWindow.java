@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 
-public class GameWindow extends JFrame implements MouseListener {
+public class GameWindow extends JFrame {
     private JPanel gamePanel;
     private JButton leaveBtn;
     private JPanel statusPanel;
@@ -47,22 +50,24 @@ public class GameWindow extends JFrame implements MouseListener {
 
     private void create() {
         timeLabel = new JLabel();
-
+        Map map = new Map();
+        setIconImage(new ImageIcon("icon.png").getImage());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Projekt GUI");
-        setMaximumSize(new Dimension(1920, 1080));
-        setResizable(true);
+        setTitle("Project GUI");
+        setMinimumSize(new Dimension(1280, 720));
+        setPreferredSize(new Dimension(1280, 720));
 
         statusPanel = new JPanel();
         statusPanel.setLayout(new BorderLayout());
         statusPanel.add(timeLabel, BorderLayout.WEST);
 
         leaveBtn = new JButton();
-        leaveBtn.setText("Leave");
+        leaveBtn.setText("To leave game click ALT + Q or click here");
+        leaveBtn.setMnemonic('Q');
         leaveBtn.addActionListener(this::leaveBtnClicked);
         statusPanel.add(leaveBtn, BorderLayout.EAST);
-
+        getContentPane().add(map, BorderLayout.CENTER);
         getContentPane().add(statusPanel, BorderLayout.PAGE_END);
 
 
@@ -75,25 +80,4 @@ public class GameWindow extends JFrame implements MouseListener {
         processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 
-
-    @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent me) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent me) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent me) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent me) {
-    }
 }

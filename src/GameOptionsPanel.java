@@ -31,9 +31,9 @@ public class GameOptionsPanel extends JPanel {
 
         sizeCombo = new JComboBox<>();
         sizeCombo.setModel(new DefaultComboBoxModel<>(new String[]{
-                "Easy Level)",
-                "Medium Level)",
-                "Hard Level)"
+                "Easy",
+                "Medium",
+                "Hard"
         }));
         sizeCombo.setMaximumSize(new Dimension(32767, 25));
         add(sizeCombo);
@@ -52,10 +52,10 @@ public class GameOptionsPanel extends JPanel {
 
     private void startBtnClicked() {
         MenuWindow menuWnd = (MenuWindow) SwingUtilities.getWindowAncestor(this);
-        int sizeIndex = sizeCombo.getSelectedIndex();
+
         GameWindow gameWnd = new GameWindow(200, 400, menuWnd);
         gameWnd.setVisible(true);
-        menuWnd.setSubMenu(MenuWindow.SubMenu.Main);
+        menuWnd.setSubMenu(MenuWindow.SubMenu.MAIN);
         menuWnd.setVisible(false);
     }
 }

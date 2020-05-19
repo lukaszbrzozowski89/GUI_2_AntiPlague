@@ -15,42 +15,43 @@ public class MenuWindow extends JFrame {
 
     public MenuWindow() {
         create();
-        setSubMenu(SubMenu.Main);
+        setSubMenu(SubMenu.MAIN);
     }
 
     public void setSubMenu(SubMenu sm) throws IllegalArgumentException {
         switch (sm) {
-            case Main:
+            case MAIN:
                 highScoresPanel.setVisible(false);
                 gameOptionsPanel.setVisible(false);
                 controlPanel.setVisible(false);
                 mainMenuPanel.setVisible(true);
                 break;
-            case HighScores:
+            case HIGH_SCORES:
                 mainMenuPanel.setVisible(false);
                 gameOptionsPanel.setVisible(false);
                 highScoresPanel.setVisible(true);
                 controlPanel.setVisible(true);
                 break;
-            case GameOptions:
+            case GAME_OPTIONS:
                 mainMenuPanel.setVisible(false);
                 highScoresPanel.setVisible(false);
                 gameOptionsPanel.setVisible(true);
                 controlPanel.setVisible(true);
                 break;
             default:
-                throw new IllegalArgumentException("unsupported submenu type");
+                throw new IllegalArgumentException("Unsupported submenu type");
         }
     }
 
     private void create() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Projekt GUI");
+        setTitle("Project GUI");
+        setIconImage(new ImageIcon("icon.png").getImage());
         setMinimumSize(new Dimension(640, 360));
         setPreferredSize(new Dimension(640, 360));
 
-        filler1 = new Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0)); // sztuczne wypełnienie
-        filler2 = new Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0)); // tak zwany klej ( glue)
+        filler1 = new Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0));
+        filler2 = new Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 0));
         mainMenuPanel = new MainMenuPanel();
         highScoresPanel = new HighScoresPanel();
         gameOptionsPanel = new GameOptionsPanel();
@@ -78,10 +79,10 @@ public class MenuWindow extends JFrame {
     }
 
     private void backBtnClicked(ActionEvent evt) {
-        setSubMenu(SubMenu.Main);
+        setSubMenu(SubMenu.MAIN);
     }
 
-    public enum SubMenu { // enum - pole enumeracyjne udogodnienie (zeby nie bylo jakis stringow)
-        Main, HighScores, GameOptions
+    public enum SubMenu {
+        MAIN, HIGH_SCORES, GAME_OPTIONS
     }
 }

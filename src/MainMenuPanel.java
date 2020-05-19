@@ -43,11 +43,11 @@ public class MainMenuPanel extends JPanel {
     }
 
     private void highScoresBtnClicked(ActionEvent event) {
-        ((MenuWindow) SwingUtilities.getWindowAncestor(this)).setSubMenu(MenuWindow.SubMenu.HighScores);
+        ((MenuWindow) SwingUtilities.getWindowAncestor(this)).setSubMenu(MenuWindow.SubMenu.HIGH_SCORES);
     }
 
     private void newGameBtnClicked(ActionEvent event) {
-        ((MenuWindow) SwingUtilities.getWindowAncestor(this)).setSubMenu(MenuWindow.SubMenu.GameOptions);
+        ((MenuWindow) SwingUtilities.getWindowAncestor(this)).setSubMenu(MenuWindow.SubMenu.GAME_OPTIONS);
     }
 
     private void exitBtnClicked(ActionEvent event) {
